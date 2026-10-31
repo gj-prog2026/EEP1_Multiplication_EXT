@@ -190,7 +190,7 @@ I also tested the code above and got the following waveform simulation:
 
 ![Waveform simulation 2](images/waveform_2.png)
 
-## Performance comparison
+### Performance comparison
 
 Cycle counts assume one cycle per instruction. Software versions include operand setup; the hardware figure includes operand loads.
 
@@ -206,7 +206,7 @@ Software time depends on the number of bits in the multiplier and on how many ar
 
 **Caveat:** this compares cycles, not wall-clock time. The added adders may lengthen the critical path, which would reduce the real-time gain.
 
-## Signed multiplication (software extension)
+### Signed multiplication (software extension)
 
 The hardware multiplies **unsigned** 16 × 16 → 32. The low word (PL) is identical for signed and unsigned operands, so only the high word (PU) needs correcting:
 
@@ -218,7 +218,7 @@ Example: `0xFFCB × 0x0064` (−53 × 100). Unsigned PU = `0x0063`; since Ra < 0
 
 The multiplier uses exactly 64 full adders (3 × 16 in `mul_16x4`, 1 × 16 in `addpupl`), the full budget, so the correction is done in software: two sign tests and up to two `SUB` instructions after `MOVC3`.
 
-## Conclusion
+### Conclusion
 
 Overall, I managed to implement unsigned multiplication in fewer clock cycles than in Task 3 and 4 of Lab 2. However, from my simulations, my implementation can only handle **unsigned** number multiplication, so there is still room for improvement.
 
