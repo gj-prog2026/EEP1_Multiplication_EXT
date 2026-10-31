@@ -1,0 +1,16 @@
+MOV R0, #12
+MOV R1, #5
+MOV R2, R1
+MOV R3, #0
+
+CMP R0, #0
+JEQ 8
+
+MOV R4, R0
+AND R4, #1
+JEQ 2
+ADD R3, R2, R3
+LSL R2, R2, #1
+LSR R0, R0, #1
+
+JMP -8

@@ -1,0 +1,31 @@
+//R0 op1
+//R1 op2_lower
+//R2 op2_upper
+//R3 op2shifted_l
+//R4 op2shifted_u
+//R5 sum_low
+//R6 sum_up
+//R7 dummy register that stores copy of op1
+
+MOV R0, #5
+MOV R1, #99
+MOV R2, #1
+MOV R3, R1
+MOV R4, R2
+
+MOV R5, #0
+MOV R6, #0
+
+
+MOV R0, R0
+JEQ 9
+MOV R7, R0
+AND R7, #1
+JEQ 3
+ADD R5, R5, R3
+ADD R6, R6, R4
+
+LSL R3, R3, #1
+ADC R4, R4, R4
+LSR R0, R0, #1
+JMP -10
